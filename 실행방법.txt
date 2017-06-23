@@ -1,0 +1,19 @@
+getting-list/check-list.js 실행 ( 비트렉스에 존재하는 일정 볼륨 미만의 코인 목록 수집 )
+getting-acc/get-history.js 실행 ( history 로그 수집함, 계속 실행되어야 함.)
+getting-acc/sum_volume.js 실행 ( buy_volume, sell_volume 테이블 업데이트, 계속 실행되어야 함. )
+api 디렉토리에 있는 내용은 웹 서버로 제공됨.
+
+선행되어야할 것
+node( >= ver.6+), mysql
+
+1. npm install
+2. create database
+3. setting conf/db-conf.js
+4. npm start
+5. go to http://localhost:3000/ in your explorer
+
+
+***
+DB Clear => npm run clear
+
+***

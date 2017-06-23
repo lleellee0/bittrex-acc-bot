@@ -1,0 +1,20 @@
+{
+  "name": "bittrex-accumulation-checking-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "check-list.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin.js",
+    "history": "node history.js",
+    "clear": "node ./conf/drop-tables.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mysql": "^2.13.0",
+    "node-datetime": "^1.0.1",
+    "node.bittrex.api": "^0.2.5"
+  }
+}

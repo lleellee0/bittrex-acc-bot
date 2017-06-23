@@ -1,0 +1,111 @@
+create table market_names (
+no int primary key auto_increment,
+market_name varchar(20) unique
+);
+
+create table history (
+no int primary key auto_increment,
+market_name varchar(20),
+id int,
+timestamp timestamp,
+total double,
+order_type varchar(4)
+);
+
+한달전 where reg_date >= date_add(now(), interval -1 month)
+하루전 where reg_date >= date_add(now(), interval -1 day)
+한시간전 where reg_date >= date_add(now(), interval -1 hour)
+
+** 타임스템프 시간 고려시 **
+현재 시간 : date_add(now(), interval -9 hour)
+1시간 동안 : date_add(now(), interval -10 hour)
+3시간 동안 : date_add(now(), interval -12 hour)
+6시간 동안 : date_add(now(), interval -15 hour)
+12시간 동안 : date_add(now(), interval -21 hour)
+24시간 동안 : date_add(now(), interval -33 hour)
+3일 동안 : date_add(now(), interval -81 hour)
+
+7일 동안(타임스탬프 고려 안함) : date_add(now(), interval -7 day)
+
+
+create table buy_volume (
+no int primary key auto_increment,
+market_name varchar(20) unique,
+one_hour double,
+three_hour double,
+six_hour double,
+half_day double,
+one_day double,
+three_day double,
+one_week double,
+);
+
+create table sell_volume (
+no int primary key auto_increment,
+market_name varchar(20) unique,
+one_hour double,
+three_hour double,
+six_hour double,
+half_day double,
+one_day double,
+three_day double,
+one_week double
+);
+
+create table buy_rate (
+no int primary key auto_increment,
+market_name varchar(20) unique,
+one_hour double,
+three_hour double,
+six_hour double,
+half_day double,
+one_day double,
+three_day double,
+one_week double
+);
+
+
+rate 구하기.
+
+SELECT
+b.no,
+b.market_name,
+b.one_hour + s.one_hour,
+b.three_hour + s.three_hour,
+b.six_hour + s.six_hour,
+b.half_day + s.half_day,
+b.one_day + s.one_day,
+b.three_day + s.three_day,
+b.one_week + s.one_week
+FROM buy_volume b, sell_volume s WHERE b.market_name = s.market_name;
+
+
+** buy / (buy + sell) => 아래 결과 바로 집어넣기에 사용됨.**
+
+SELECT
+b.no,
+b.market_name,
+b.one_hour / (b.one_hour + s.one_hour) as one_hour,
+b.three_hour / (b.three_hour + s.three_hour) as three_hour,
+b.six_hour / (b.six_hour + s.six_hour) as six_hour,
+b.half_day / (b.half_day + s.half_day) as half_day,
+b.one_day / (b.one_day + s.one_day) as one_day,
+b.three_day / (b.three_day + s.three_day) as three_day,
+b.one_week / (b.one_week + s.one_week) as one_week
+FROM buy_volume b, sell_volume s WHERE b.market_name = s.market_name;
+
+** 결과 바로 집어넣기 **
+INSERT INTO buy_rate (market_name, one_hour, three_hour, six_hour, half_day, one_day, three_day, one_week)
+SELECT
+b.market_name,
+b.one_hour / (b.one_hour + s.one_hour) as one_hour,
+b.three_hour / (b.three_hour + s.three_hour) as three_hour,
+b.six_hour / (b.six_hour + s.six_hour) as six_hour,
+b.half_day / (b.half_day + s.half_day) as half_day,
+b.one_day / (b.one_day + s.one_day) as one_day,
+b.three_day / (b.three_day + s.three_day) as three_day,
+b.one_week / (b.one_week + s.one_week) as one_week
+FROM buy_volume b, sell_volume s WHERE b.market_name = s.market_name
+
+** 결과 집어 넣기 전에 테이블 비우기 **
+DELETE FROM buy_rate
