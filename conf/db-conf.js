@@ -1,7 +1,7 @@
 exports.module = {
   connectionLimit: 100,
   host: 'localhost',
-  user: 'YOUR_DB_USER_NAME',
-  password: 'YOUR_DB_USER_PASSWORD',
+  user: 'root',
+  password: 'mysql123',
   database: 'bittrex_acc_bot'
 };
