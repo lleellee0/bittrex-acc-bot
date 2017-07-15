@@ -15,5 +15,5 @@ node( >= ver.6+), mysql
 
 ***
 DB Clear => npm run clear
-
+History 모으기 => num run history
 ***
