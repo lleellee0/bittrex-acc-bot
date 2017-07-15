@@ -44,6 +44,9 @@ BTC-2GIVE 의 경우 1.82% (0.01/0.46) 이라고 나와있습니다.
 윈도우에서 설치하는 방법과 우분투에서 설치하는 방법으로 나눠서 작성하겠습니다.
 
 ## 3.1 윈도우에서 설치하기
+Node.js 설치
+Mysql 설치
+DB 관련 설정 변경
 
 ![alt text](https://github.com/lleellee0/images/blob/master/screenshot_2.png)
 
