@@ -56,10 +56,42 @@ https://nodejs.org/ko/
 
 다운로드가 완료되었다면 실행시켜서 쭉 Next, Install 눌러주시면 됩니다.
 설치가 완료되었다면 Finish를 눌러주시고 왼쪽 아래의 시작버튼을 눌러서 cmd라고 검색하고 실행을 합니다.
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_6.png)
+
 거기서 node --version 이라고 입력했을 때 자신이 설치한 버전의 Node.js가 나온다면 정상적으로 설치가 된겁니다.
 
+### Mysql 설치
+Mysql은 다음 링크를 클릭하여 다운로드 할 수 있습니다.
+https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-web-community-5.7.18.1.msi
+여기서 받아지는 것은 Mysql 본 파일이 아닌 인스톨러 입니다. 이 인스톨러를 실행시킵니다.
+이때! 설치가 잘 될 수도 있겠지만 다음과 같은 에러를 만나실 수도 있습니다. (문제없이 쭉 진행되시는 분은 건너 뛰셔도 됩니다.)
 
-Mysql 설치
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_7.png)
+
+이를 해결하려면 다음 링크로 이동하세요.
+https://www.microsoft.com/ko-KR/download/details.aspx?id=17113
+다운로드를 클릭 후 다음 화면으로 넘어가면 체크박스에 있는 것들은 체크하지 말고 오른쪽 아래의 [건너뛰고 다음 단계 진행]을 클릭합니다.
+**dotNetFx40_Client_setup.exe** 파일이 다운로드 되었을 것입니다. 실행시켜줍니다. 다음 쭉 눌러주시면 설치가 될겁니다.
+
+다시 Mysql 설치로 돌아와서, 인스톨러를 실행시키고 다음을 누르면 아래와 같은 선택지를 만나게됩니다. 여기서부턴 쭉 따라하시면됩니다.
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_8.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_9.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_10.png)
+비슷한게 몇번 더 나올겁니다. 같은 방식으로 약관에 동의 체크, 다음을 눌러주시면 됩니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_11.png)
+복구와 제거 중에 선택하는 것에서는 복구를 선택해주세요.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_12.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_13.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_14.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_15.png)
+Error 혹은 Failed가 떠도 걱정마세요. Server만 정상적으로 설치되면 됩니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_16.png)
+쭉 Next를 눌러서 다음 화면까지 오세요.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_17.png)
+기존에 Mysql을 설치하지 않은 분이라면 3306으로 알아서 입력이 되어있겠지만 혹 Mysql을 두번째 설치하시는 분이라면 다음 포트가 잡혀있을 겁니다. 기존에 Mysql을 설치해보셨던 분이라면 어떻게 해야할지 알고 계실겁니다. :)
+
 DB 관련 설정 변경
 
 ![alt text](https://github.com/lleellee0/images/blob/master/screenshot_2.png)
