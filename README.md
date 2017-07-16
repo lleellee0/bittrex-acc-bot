@@ -91,9 +91,84 @@ Error 혹은 Failed가 떠도 걱정마세요. Server만 정상적으로 설치�
 쭉 Next를 눌러서 다음 화면까지 오세요.
 ![alt text](https://github.com/lleellee0/images/blob/master/screenshot_17.png)
 기존에 Mysql을 설치하지 않은 분이라면 3306으로 알아서 입력이 되어있겠지만 혹 Mysql을 두번째 설치하시는 분이라면 다음 포트가 잡혀있을 겁니다. 기존에 Mysql을 설치해보셨던 분이라면 어떻게 해야할지 알고 계실겁니다. :)
+Next를 클릭하면 비밀번호를 설정하는 화면이 나옵니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_18.png)
+mysql 비밀번호로 설정할 비밀번호를 입력하고 Next를 눌러줍니다. 여기서 비밀번호는 추후 설정에 입력해야하기 때문에 반드시 기억해야합니다.
+쭉 Next, Execute를 눌러줍니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_19.png)
+다시 Next, Execute를 눌러줍니다.
 
-DB 관련 설정 변경
+Mysql 환경변수를 설정해야 합니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_20.png)
+시작메뉴에서 컴퓨터를 우클릭 한 후 속성을 클릭합니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_21.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_22.png)
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_23.png)
 
+시스템 변수에서 Path를 찾아서 더블클릭한 후 변수 값 뒤쪽에 ;C:\Program Files\MySQL\MySQL Server 5.7\bin 를 복사하여 붙여넣습니다. 주의하세요.
+
+;C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+입니다. 세미콜론을 붙이고 해주셔야 합니다. 결과적으로 다음과 같은 모양이 될겁니다.
+
+%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Server 5.7\bin
+
+확인을 눌러서 설정을 저장합니다.
+
+다시 cmd를 실행시킵니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_6.png)
+
+**기존에 있던 창을 이용하시면 환경변수가 설정되지 않은 상태의 cmd 창이기 때문에 mysql 명령이 먹지 않을 수 있습니다.**
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_24.png)
+
+mysql -u root -p를 입력한 후 엔터를 입력하고 아까 설정했던 mysql 비밀번호를 입력합니다.
+**숫자 입력시 주의할 점은 한글자판 위쪽의 숫자와 오른쪽의 키패드의 숫자를 다르게 인식할 수 있기 때문에 주의하셔야합니다. 가능하면 한글자판 위쪽의 숫자를 이용해 입력해주세요.**
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_25.png)
+**CREATE DATABASE bittrex_acc_bot;** 을 입력합니다.
+(오타를 칠 염려가 있기 때문에 이 명령어를 복사해서 붙여넣기하세요. cmd 창에서는 Ctrl+v가 먹히지 않기 때문에 오른쪽 클릭 후 붙여넣기 해주세요.)
+창을 닫습니다.
+
+아래 링크를 클릭해 소스코드를 다운받습니다.
+https://github.com/lleellee0/bittrex-acc-bot/archive/master.zip
+다운로드 받은 파일을 압축해제합니다.
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_26.png)
+폴더를 타고 들어가서 **아무 파일도 선택하지 않은 상태에서** Shift+우클릭을 한 후 [여기서 명령 창 열기]를 선택합니다.
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_27.png)
+cmd창이 열릴겁니다. npm install 이라고 입력합니다.
+잠깐 대기하시면 필요한 라이브러리들이 다운로드 됩니다.
+창은 그대로 둔 상태에서 다시 폴더로 돌아옵니다.
+
+### DB 관련 설정 변경
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_28.png)
+conf 폴더로 들어간 후 db-conf 파일이 있을겁니다. 우클릭 후 편집을 눌러줍니다.
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_29.png)
+password 부분을 아까 자신이 설정했던 mysql 비밀번호로 설정합니다.
+저장 후 창을 닫습니다.
+
+### 실행하기
+다시 npm install을 입력한 후 끄지않고 두었던 cmd 창으로 돌아와서 npm start를 입력합니다.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_30.png)
+
+다음과 같은 에러를 띄울 수도 있습니다. 당황하지 말고 npm start를 다시 입력하고 엔터를 눌러주세요.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_31.png)
+
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_32.png)
+잘 실행이 되고 있습니다.
+
+### 결과보기
+익스플로러나 크롬 같은 웹 브라우저를 실행시키세요.
+주소창에 localhost:3000을 입력해주세요.
+![alt text](https://github.com/lleellee0/images/blob/master/screenshot_33.png)
+
+**결과를 확인하려면 로그를 수집해야합니다. 이 작업은 최대 5분까지 소요될 수 있습니다.**
+**5분이 지나도 결과를 확인할 수 없다면 프로그램을 실행중인 cmd창에서 Ctrl+c를 이용해 프로그램을 종료시킨 후 다시 npm start를 입력하여 다시 실행을 시켜주세요.**
+
+PowerShell에서 실행시키면 다음과 같이 실행될겁니다.
 ![alt text](https://github.com/lleellee0/images/blob/master/screenshot_2.png)
 
 ## 3.2 우분투에서 설치하기
