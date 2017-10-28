@@ -1,3 +1,6 @@
+본 프로그램을 이용해 주시는 분들께 대단히 감사드립니다.
+발생하는 이슈들에 대해서는 빠르게 대처하기는 어렵지만 Issues에 남겨주시면 앞으로 프로그램 개발하는데 큰 도움이 될 것 같습니다.
+
 # bittrex-acc-bot
 this application is 'Bittrex Accumulation Checking Bot'.
 
