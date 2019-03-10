@@ -31,29 +31,31 @@ setInterval(() => {
 const get_history = () => {
   log.logWithTime('get_history is called! ( interval 5 minutes )');
   for(let i = 0; i < names.length; i++) {
-    request.get(history_url + names[i].market_name, (err, response, body) => {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        log.logWithTime(err);
-        return;
-      }
-
-      let results = body.result;
-
-      if(results !== null && results.length !== null)
-        for(let j = 0; j < results.length; j++) {
-          let obj = results[j];
-          connection.query('INSERT INTO history_' + util.parseMarketName(names[i].market_name) + ' (id, timestamp, total, order_type) VALUES (?, ?, ?, ?)',
-          [obj.Id, obj.TimeStamp, obj.Total, obj.OrderType], (err, results) => {
-            if(err) {
-              // occured Error: ER_DUP_ENTRY: Duplicate entry 'XXXXXX' for key 'id'
-              // 나중에 쿼리 자체를 안날리도록 수정해야겠다.
-              // log.logWithTime(err);
-              return;
-            }
-          });
+    setTimeout(() => {
+      request.get(history_url + names[i].market_name, (err, response, body) => {
+        try {
+          body = JSON.parse(body);
+        } catch (e) {
+          log.logWithTime(err);
+          return;
         }
-    });
+  
+        let results = body.result;
+  
+        if(results !== null && results.length !== null)
+          for(let j = 0; j < results.length; j++) {
+            let obj = results[j];
+            connection.query('INSERT INTO history_' + util.parseMarketName(names[i].market_name) + ' (id, timestamp, total, order_type) VALUES (?, ?, ?, ?)',
+            [obj.Id, obj.TimeStamp, obj.Total, obj.OrderType], (err, results) => {
+              if(err) {
+                // occured Error: ER_DUP_ENTRY: Duplicate entry 'XXXXXX' for key 'id'
+                // 나중에 쿼리 자체를 안날리도록 수정해야겠다.
+                // log.logWithTime(err);
+                return;
+              }
+            });
+          }
+      });
+    }, i * 1000);
   }
 }
