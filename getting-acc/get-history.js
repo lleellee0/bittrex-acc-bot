@@ -33,6 +33,7 @@ const get_history = () => {
   for(let i = 0; i < names.length; i++) {
     setTimeout(() => {
       request.get(history_url + names[i].market_name, (err, response, body) => {
+        log.logWithTime(history_url + names[i].market_name);
         try {
           body = JSON.parse(body);
         } catch (e) {

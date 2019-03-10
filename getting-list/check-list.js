@@ -2,7 +2,7 @@ const bittrex = require('node.bittrex.api');
 const request = require('request');
 const mysql = require('mysql');
 const db_conf = require('../conf/db-conf.js');
-const general_conf = require('../conf/general-conf.js');
+const general_conf = require('../conf/general-conf.js').module;
 const util = require('../util/util.js');
 const log = require('../util/log.js');
 
@@ -10,7 +10,6 @@ let connection = mysql.createConnection(db_conf.module);
 
 let list_url = 'https://bittrex.com/api/v2.0/pub/Markets/GetMarketSummaries';
 let limit_volume = general_conf.limit_volume;
-
 connection.connect();
 
 request.get(list_url, (err, response, body) => {
