@@ -32,16 +32,12 @@ connection.query('SELECT * FROM market_names', (err, results) => {
   names = results;
 });
 
-setTimeout(() => {
-  sum_volume();
-}, 1000*20); // first check-acc after 20 seconds.
-
 setInterval(() => {
   sum_volume();
 }, 1000*60*3); // 3 minutes interval.
 
 const sum_volume = () => {
-  log.logWithTime('calc_rate is called! ( interval 3 minutes )');
+  log.logWithTime('sum_volume is called! ( interval 3 minutes )');
 
   for(let i = 0; i < names.length; i++) {
     for(let j = 0; j < timestamp_array.length; j++) {
