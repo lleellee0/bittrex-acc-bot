@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const db_conf = require('../conf/db-conf.js');
+const general_conf = require('../conf/general-conf.js').module;
 
 let connection = mysql.createConnection(db_conf.module);
 
@@ -36,8 +37,8 @@ app.get('/api/v1/sell-volume', function (req, res) {
   res.json(tables.sell_volume_table);
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(general_conf.webserver_port, function () {
+  console.log(`Example app listening on port ${general_conf.webserver_port}!`);
 });
 
 setTimeout(() => {
